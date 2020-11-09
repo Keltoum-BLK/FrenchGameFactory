@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		D1E1CBF5255994E500FAE1AF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1CBF4255994E500FAE1AF /* main.swift */; };
 		D1E1CC002559950900FAE1AF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1CBFF2559950900FAE1AF /* Game.swift */; };
+		D1FB7AD92559990700EF4098 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AD82559990700EF4098 /* Player.swift */; };
+		D1FB7ADC2559995F00EF4098 /* Charaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7ADB2559995F00EF4098 /* Charaters.swift */; };
+		D1FB7AE02559996D00EF4098 /* Templar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7ADF2559996D00EF4098 /* Templar.swift */; };
+		D1FB7AE32559997900EF4098 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AE22559997900EF4098 /* Dwarf.swift */; };
+		D1FB7AE62559998200EF4098 /* Elf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AE52559998200EF4098 /* Elf.swift */; };
+		D1FB7AE92559998C00EF4098 /* Magus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AE82559998C00EF4098 /* Magus.swift */; };
+		D1FB7AEC2559999600EF4098 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AEB2559999600EF4098 /* Weapon.swift */; };
+		D1FB7AEF2559999E00EF4098 /* Sword.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AEE2559999E00EF4098 /* Sword.swift */; };
+		D1FB7AF2255999A600EF4098 /* Axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AF1255999A600EF4098 /* Axe.swift */; };
+		D1FB7AF5255999B000EF4098 /* Bow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AF4255999B000EF4098 /* Bow.swift */; };
+		D1FB7AF8255999BA00EF4098 /* Stick.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB7AF7255999BA00EF4098 /* Stick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +38,17 @@
 		D1E1CBF1255994E500FAE1AF /* FrenchGameFactory */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FrenchGameFactory; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E1CBF4255994E500FAE1AF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D1E1CBFF2559950900FAE1AF /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D1FB7AD82559990700EF4098 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D1FB7ADB2559995F00EF4098 /* Charaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charaters.swift; sourceTree = "<group>"; };
+		D1FB7ADF2559996D00EF4098 /* Templar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templar.swift; sourceTree = "<group>"; };
+		D1FB7AE22559997900EF4098 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
+		D1FB7AE52559998200EF4098 /* Elf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elf.swift; sourceTree = "<group>"; };
+		D1FB7AE82559998C00EF4098 /* Magus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magus.swift; sourceTree = "<group>"; };
+		D1FB7AEB2559999600EF4098 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		D1FB7AEE2559999E00EF4098 /* Sword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sword.swift; sourceTree = "<group>"; };
+		D1FB7AF1255999A600EF4098 /* Axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
+		D1FB7AF4255999B000EF4098 /* Bow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bow.swift; sourceTree = "<group>"; };
+		D1FB7AF7255999BA00EF4098 /* Stick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +83,17 @@
 			children = (
 				D1E1CBF4255994E500FAE1AF /* main.swift */,
 				D1E1CBFF2559950900FAE1AF /* Game.swift */,
+				D1FB7AD82559990700EF4098 /* Player.swift */,
+				D1FB7ADB2559995F00EF4098 /* Charaters.swift */,
+				D1FB7ADF2559996D00EF4098 /* Templar.swift */,
+				D1FB7AE22559997900EF4098 /* Dwarf.swift */,
+				D1FB7AE52559998200EF4098 /* Elf.swift */,
+				D1FB7AE82559998C00EF4098 /* Magus.swift */,
+				D1FB7AEB2559999600EF4098 /* Weapon.swift */,
+				D1FB7AEE2559999E00EF4098 /* Sword.swift */,
+				D1FB7AF1255999A600EF4098 /* Axe.swift */,
+				D1FB7AF4255999B000EF4098 /* Bow.swift */,
+				D1FB7AF7255999BA00EF4098 /* Stick.swift */,
 			);
 			path = FrenchGameFactory;
 			sourceTree = "<group>";
@@ -122,8 +155,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1FB7AF8255999BA00EF4098 /* Stick.swift in Sources */,
+				D1FB7AF5255999B000EF4098 /* Bow.swift in Sources */,
 				D1E1CBF5255994E500FAE1AF /* main.swift in Sources */,
+				D1FB7AD92559990700EF4098 /* Player.swift in Sources */,
+				D1FB7AE62559998200EF4098 /* Elf.swift in Sources */,
+				D1FB7AE92559998C00EF4098 /* Magus.swift in Sources */,
+				D1FB7AE32559997900EF4098 /* Dwarf.swift in Sources */,
+				D1FB7AEF2559999E00EF4098 /* Sword.swift in Sources */,
 				D1E1CC002559950900FAE1AF /* Game.swift in Sources */,
+				D1FB7AE02559996D00EF4098 /* Templar.swift in Sources */,
+				D1FB7ADC2559995F00EF4098 /* Charaters.swift in Sources */,
+				D1FB7AEC2559999600EF4098 /* Weapon.swift in Sources */,
+				D1FB7AF2255999A600EF4098 /* Axe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
