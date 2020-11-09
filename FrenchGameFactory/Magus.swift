@@ -10,7 +10,7 @@ import Foundation
 class Magus : Characters{
     static let type = "Magus"
     static let lifePoint = 150
-    static let weapon = Sword()
+    static let weapon = Stick()
     
     init(){
         super.init(type :"Magus", name : name, lifePoint: 150, weapon : Stick())

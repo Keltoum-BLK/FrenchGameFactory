@@ -7,11 +7,11 @@
 
 import Foundation
 class Axe : Weapon{
-    static let nameWeappon = "sword"
-    static let damage = 15
+    static let nameWeappon = "axe"
+    static let damage = 30
     
     
     init() {
-        super.init(nameWeapon : "axe",damage: 15)
+        super.init(nameWeapon : "axe",damage: 30)
     }
 }

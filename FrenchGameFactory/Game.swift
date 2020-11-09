@@ -29,15 +29,6 @@ class Game {
     func displayWinner(){
         
     }
-    
-   
-
-  
-        
-        /*Comment indiquer que le nom c'est le player qui le donne
-        comment assigner une arme spécifique en utilisant la mere et la fille
-         modifier aussi la propriété force*/
-
 
 }
 
