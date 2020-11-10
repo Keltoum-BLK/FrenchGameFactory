@@ -7,8 +7,6 @@
 
 import Foundation
 
-var str = "1"
-var strInt = Int(str)
 
 //Caster les choix (1,2,3) du joueur pour mettre en place switch case plus tard
 func getInputInt()-> Int {
@@ -17,3 +15,5 @@ func getInputInt()-> Int {
     guard let strData = str, let strDataInt = Int(strData) else { return -1 }
     return strDataInt
 }
+
+

@@ -12,9 +12,15 @@ import Foundation
 // pour chaque personnages choisi un nom à donner , mais également limiter les équipe à 3 (tableau) on peut a choisir des personnages de la meme classe.
     
     
-    class Player{
+   public class Player{
+    let numberPlayer = 2
+    let namePlayer : String
     let characterAlive : [Characters] = [Characters]()
     let characterDead :[Characters] = [Characters]()
+    
+    init(namePlayer : String){
+        self.namePlayer = namePlayer
+    }
     
     
         func heal /*(Characters.lifePoints :Int )*/(){

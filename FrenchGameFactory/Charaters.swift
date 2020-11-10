@@ -16,7 +16,7 @@ import Foundation
         var lifePoint : Int
         var weapon : Weapon
         
-        init(type : String name : String ,lifePoint : Int, weapon : Weapon) {
+        init(type : String, name : String ,lifePoint : Int, weapon : Weapon) {
             self.type = type
             self.name = name
             self.lifePoint = lifePoint
