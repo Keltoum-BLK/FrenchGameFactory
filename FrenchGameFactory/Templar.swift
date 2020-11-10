@@ -14,7 +14,7 @@ class Templar : Characters{
     static let lifePoint = 150
     static let weapon = Sword()
     
-    init(){
-        super.init(type :"Templar", name : name, lifePoint: 150, weapon : Sword())
-    }
+//    init(){
+//        super.init(type :"Templar", name : name, lifePoint: 150, weapon : Sword())
+//    }
 }

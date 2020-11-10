@@ -11,7 +11,7 @@ class Dwarf : Characters{
     static let lifePoint = 200
     static let weapon = Axe()
     
-    init(){
+    init(name : String){
         super.init(type :"Dwarf", name : name, lifePoint: 150, weapon : Axe())
     }
 }
