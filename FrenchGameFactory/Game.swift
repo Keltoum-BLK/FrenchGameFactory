@@ -26,17 +26,18 @@ class Game {
         print("Renseigne ton nom: ")
         let nameP1 = Tools.shared.getInputString()
             _ = Player(namePlayer: nameP1)
-        game.createTeams()
+        createTeams()
         numberPlayers += 1
         }
     }
+    
     func createTeams(){
         //définir le nombre de perso par joueur et les actions proposer au jouer :
         // nommer quels classes pour les personnages choisi et leur nom et les stocker dans le tableau CharacterAlive
         var characterAlive : [Characters] = [Characters]()
 //        let strChoice = Tools.shared.getInputInt()
 
-        for _ in characterAlive{
+        for _ in 0 ... 2{
             print("Veuillez selectionner la classe de votre personnage: "
             + "\n1. Templier, arme : épée."
             + "\n2. Nain, arme : hâche."
@@ -45,34 +46,42 @@ class Game {
      
             let strChoice = Tools.shared.getInputInt()
             switch strChoice{
-            case 1 :
-                print("Veuillez choisir le nom de votre templier?")
-                 let charaName = Tools.shared.getInputString()
-                let templar = Templar(name : charaName)
-                characterAlive.append(templar)
-            case 2 :
-                //le meme code que templar
-                print("Veuillez choisir le nom de votre nain?")
-                let charaName = Tools.shared.getInputString()
-                let dwarf = Dwarf(name : charaName)
-                characterAlive.append(dwarf)
-            case 3 :
-                //le meme code que templar
-                print("Veuillez choisir le nom de votre elf?")
-                let charaName = Tools.shared.getInputString()
-                let elf = Elf(name : charaName)
-                characterAlive.append(elf)
-            case 4 :
-                //le meme code que templar
-                print("Veuillez choisir le nom de votre mage?")
-                let charaName = Tools.shared.getInputString()
-                let magus = Magus(name : charaName)
-                characterAlive.append(magus)
-            default :
-                print("Je ne comprends pas.")
+                case 1 :
+                    print("Veuillez choisir le nom de votre templier?")
+                    let charaName = Tools.shared.getInputString()
+                    let templar = Templar(name : charaName)
+                    characterAlive.append(templar)
+
+                case 2 :
+                    //le meme code que templar
+                    print("Veuillez choisir le nom de votre nain?")
+                    let charaName = Tools.shared.getInputString()
+                    let dwarf = Dwarf(name : charaName)
+                    characterAlive.append(dwarf)
+
+                case 3 :
+                    //le meme code que templar
+                    print("Veuillez choisir le nom de votre elf?")
+                    let charaName = Tools.shared.getInputString()
+                    let elf = Elf(name : charaName)
+                    characterAlive.append(elf)
+
+                case 4 :
+                    //le meme code que templar
+                    print("Veuillez choisir le nom de votre mage?")
+                    let charaName = Tools.shared.getInputString()
+                    let magus = Magus(name : charaName)
+                    characterAlive.append(magus)
+
+                default :
+                    print("Je ne comprends pas.")
+
             }
         }
-     
+        print("count :  \(characterAlive.count)")
+        for i in 0..<characterAlive.index(after: 2){
+            print("affichage: \(characterAlive[i])")
+        }
     }
     
     func StartBattle () {
