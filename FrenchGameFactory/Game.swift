@@ -34,16 +34,16 @@ class Game {
         //définir le nombre de perso par joueur et les actions proposer au jouer :
         // nommer quels classes pour les personnages choisi et leur nom et les stocker dans le tableau CharacterAlive
         var characterAlive : [Characters] = [Characters]()
-        let strChoice = Tools.shared.getInputInt()
+//        let strChoice = Tools.shared.getInputInt()
 
-        while characterAlive.count < 3{
+        for _ in characterAlive{
             print("Veuillez selectionner la classe de votre personnage: "
             + "\n1. Templier, arme : épée."
             + "\n2. Nain, arme : hâche."
             + "\n3. Elf, arme : arc."
             + "\n4. Mage, arme : sort d'attaque.")
-            
-         
+     
+            let strChoice = Tools.shared.getInputInt()
             switch strChoice{
             case 1 :
                 print("Veuillez choisir le nom de votre templier?")

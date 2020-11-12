@@ -14,8 +14,8 @@ import Foundation
     
    public class Player{
     let numberPlayer = 2
-    let namePlayer : String
-    let characterAlive : [Characters] = [Characters]()
+    var namePlayer : String
+    var characterAlive : [Characters] = [Characters]()
     let characterDead :[Characters] = [Characters]()
     
     init(namePlayer : String){
