@@ -13,7 +13,6 @@ import Foundation
 //print(Tools.shared.getInputInt())
 //
 let game = Game()
-game.Intro()
 game.startGame()
 
 
