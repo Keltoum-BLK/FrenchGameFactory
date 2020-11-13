@@ -13,14 +13,15 @@ import Foundation
     
     
    public class Player{
-    let numberPlayer = 2
     var namePlayer : String
     var characterAlive : [Characters] = [Characters]()
-    let characterDead :[Characters] = [Characters]()
+    var characterDead :[Characters] = [Characters]()
     
     init(namePlayer : String){
         self.namePlayer = namePlayer
     }
+
+    
     
     
         func heal /*(Characters.lifePoints :Int )*/(){
@@ -38,5 +39,6 @@ import Foundation
     func attack(){
         // lors de l'attaque sur une personnage associer la force avec les points de dommages.
         //mettre en place des case pour selection le personnage à attquer?
-    }
+        }
+    
 }

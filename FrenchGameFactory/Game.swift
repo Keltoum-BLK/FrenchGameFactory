@@ -13,30 +13,38 @@ import Foundation
 
 // Définir les accès
 class Game {
-    // mettre en place le coffret aléatoire dans le jeu
+    let numberPlayer = 2
+    
+    
+    
+    
+    
     func Intro(){
-        print("Bienvenue à Crash of Inquisition. \n Vous participez à un jeu de rôle au tour par tous où vous vous affrontrez l'un contre l'autre. \n Le vainqueur est celui qui restera en vie. Alors c'est partie!!!")
+        print("Bienvenue à Crash of Inquisition. \nVous participez à un jeu de rôle au tour par tous où vous vous affrontrez l'un contre l'autre. \nLe vainqueur est celui qui restera en vie.\n \nAlors c'est partie!!!\n")
     }
     
-   func startGame(){
-    
-    var numberPlayers = 2
+    func createPlayer() -> Player{
+   
+        print("Premier joueur, Quel est le nom de ton équipe?")
+        let namePlayer = Tools.shared.getInputString()
+        let player = Player(namePlayer: namePlayer)
+        
+        return player
+    }
 
-        while numberPlayers == 2{
-        print("Renseigne ton nom: ")
-        let nameP1 = Tools.shared.getInputString()
-            _ = Player(namePlayer: nameP1)
-        createTeams()
-        numberPlayers += 1
-        }
+   func startGame(){
+    // definir les joueurs et stocker les joueurs
+    //créer le joueur 1 et 2 et demander de créer la chaque joueur en appelant la méthode de createTeams.
+    
+    
     }
+   
     
     func createTeams(){
-        //définir le nombre de perso par joueur et les actions proposer au jouer :
-        // nommer quels classes pour les personnages choisi et leur nom et les stocker dans le tableau CharacterAlive
-        var characterAlive : [Characters] = [Characters]()
-//        let strChoice = Tools.shared.getInputInt()
-
+      // avec les joueurs créer lancer la méthode selectTeams de la classe Player
+        
+        var characterAlive = createPlayer().characterAlive
+        
         for _ in 0 ... 2{
             print("Veuillez selectionner la classe de votre personnage: "
             + "\n1. Templier, arme : épée."
@@ -77,11 +85,7 @@ class Game {
                     print("Je ne comprends pas.")
 
             }
-        }
-        print("count :  \(characterAlive.count)")
-        for i in 0..<characterAlive.index(after: 2){
-            print("affichage: \(characterAlive[i])")
-        }
+        
     }
     
     func StartBattle () {
@@ -93,10 +97,10 @@ class Game {
         
     }
 
-
-
-
-    
+    // mettre en place le coffret aléatoire dans le jeu
+   }
 
 }
+
+
 
