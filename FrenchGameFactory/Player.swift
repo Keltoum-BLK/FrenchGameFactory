@@ -13,6 +13,8 @@ import Foundation
     
     
    public class Player{
+    
+    
     var namePlayer : String
     var characterAlive : [Characters] = [Characters]()
     var characterDead :[Characters] = [Characters]()
@@ -21,7 +23,10 @@ import Foundation
         self.namePlayer = namePlayer
     }
 
- 
+
+   
+    
+   
     
     
         func heal /*(Characters.lifePoints :Int )*/(){
