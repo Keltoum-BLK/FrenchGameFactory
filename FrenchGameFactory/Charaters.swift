@@ -22,4 +22,16 @@ import Foundation
             self.lifePoint = lifePoint
             self.weapon = weapon
         }
+        
+    //  
+    //    func attack(){
+    //        // lors de l'attaque sur une personnage associer la force avec les points de dommages.
+    //        //mettre en place des case pour selection le personnage à attquer?
+    //
+    //    }
+        
+    
+    
+    
+    
     }
