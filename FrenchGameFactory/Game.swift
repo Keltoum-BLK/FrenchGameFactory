@@ -47,38 +47,36 @@ class Game {
         
         repeat {
             let team = Tools.shared.getInputInt()
-            
-            switch team {
-            case 1 :
-                teamNumber += 1
-                let templar = Templar(name : name)
-                print(templar.name, templar.weapon.nameWeapon, templar.weapon.damage)
-                return templar
+          
+                switch team {
+                    case 1 :
+                        teamNumber += 1
+                        let templar = Templar(name : name)
+                        print(templar.name, templar.weapon.nameWeapon, templar.weapon.damage)
+                        return templar
            
-            
-            case 2 :
-                teamNumber += 1
-                let dwarf = Dwarf(name : name)
-                print(dwarf.name, dwarf.weapon.nameWeapon, dwarf.weapon.damage)
-                return dwarf
+                    case 2 :
+                        teamNumber += 1
+                        let dwarf = Dwarf(name : name)
+                        print(dwarf.name, dwarf.weapon.nameWeapon, dwarf.weapon.damage)
+                        return dwarf
          
-            
-            case 3 :
-                teamNumber += 1
-                let elf = Elf(name : name)
-                print(elf.name, elf.weapon.nameWeapon, elf.weapon.damage)
-                return elf
-           
-            
-            case 4 :
-                teamNumber += 1
-                let magus = Magus(name : name)
-                print(magus.name, magus.weapon.nameWeapon, magus.weapon.damage)
-                return magus
+                    case 3 :
+                        teamNumber += 1
+                        let elf = Elf(name : name)
+                        print(elf.name, elf.weapon.nameWeapon, elf.weapon.damage)
+                        return elf
+                        
+                    case 4 :
+                        teamNumber += 1
+                        let magus = Magus(name : name)
+                        print(magus.name, magus.weapon.nameWeapon, magus.weapon.damage)
+                        return magus
             default:
                 print("you didn't choose a character")
             }
-        } while teamNumber < 1
+        
+    } while teamNumber < 1
     }
     
     func createPlayer()  -> Player {
