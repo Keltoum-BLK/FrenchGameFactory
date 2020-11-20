@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1748B7F2568157B00790320 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1748B7E2568157B00790320 /* Spell.swift */; };
 		D1BAB0D5255B27F200B00EB5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BAB0D4255B27F200B00EB5 /* Tools.swift */; };
 		D1E1CBF5255994E500FAE1AF /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1CBF4255994E500FAE1AF /* main.swift */; };
 		D1E1CC002559950900FAE1AF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1CBFF2559950900FAE1AF /* Game.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D1748B7E2568157B00790320 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		D1BAB0D4255B27F200B00EB5 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		D1E1CBF1255994E500FAE1AF /* FrenchGameFactory */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FrenchGameFactory; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E1CBF4255994E500FAE1AF /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				D1FB7AF1255999A600EF4098 /* Axe.swift */,
 				D1FB7AF4255999B000EF4098 /* Bow.swift */,
 				D1FB7AF7255999BA00EF4098 /* Stick.swift */,
+				D1748B7E2568157B00790320 /* Spell.swift */,
 			);
 			path = FrenchGameFactory;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				D1E1CBF5255994E500FAE1AF /* main.swift in Sources */,
 				D1FB7AD92559990700EF4098 /* Player.swift in Sources */,
 				D1FB7AE62559998200EF4098 /* Elf.swift in Sources */,
+				D1748B7F2568157B00790320 /* Spell.swift in Sources */,
 				D1FB7AE92559998C00EF4098 /* Magus.swift in Sources */,
 				D1FB7AE32559997900EF4098 /* Dwarf.swift in Sources */,
 				D1FB7AEF2559999E00EF4098 /* Sword.swift in Sources */,

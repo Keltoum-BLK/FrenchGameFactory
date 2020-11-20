@@ -14,8 +14,8 @@ import Foundation
 // Définir les accès
 class Game {
     private var player1: Player?
-    private var player2 : Player?
-    
+    private var player2: Player?
+    private var hasAlreadyChooseMagus: Bool = false
     
     
     func intro(){
@@ -25,9 +25,11 @@ class Game {
     func createTeams() {
         print("🎮 Player 1 : you first : ")
         player1 = createPlayer()
+        hasAlreadyChooseMagus = false
+        player1?.printCharacterInLife()
         print("\n🎮 Player 2 : your turn : ")
         player2 = createPlayer()
-
+        player2?.printCharacterInLife()
     }
     
     func startGame(){
@@ -39,49 +41,57 @@ class Game {
     func choiceTeam(name: String) -> Characters {
         var teamNumber = 0
         
-        print("Please select your character class: "
-                + "\n1. 🛡Templar, weapon: sword."
-                + "\n2. 🪓Dwarf, weapon: axe."
-                + "\n3. 🧝🏼‍♂️Elf, weapon: bow."
-                + "\n4. 🧙🏼Magus, the healer.")
+        
+        !hasAlreadyChooseMagus ? print("Please select your character class: "
+                                        + "\n1. 🛡Templar, weapon: sword."
+                                        + "\n2. 🪓Dwarf, weapon: axe."
+                                        + "\n3. 🧝🏼‍♂️Elf, weapon: bow."
+                                        + "\n4. 🧙🏼Magus, the healer.") : print("Please select your character class: "
+                                                                                        + "\n1. 🛡Templar, weapon: sword."
+                                                                                        + "\n2. 🪓Dwarf, weapon: axe."
+                                                                                        + "\n3. 🧝🏼‍♂️Elf, weapon: bow.")
+        
         
         repeat {
             let team = Tools.shared.getInputInt()
-          
-                switch team {
-                    case 1 :
-                        teamNumber += 1
-                        let templar = Templar(name : name)
-                        print(templar.name, templar.weapon.nameWeapon, templar.weapon.damage)
-                        return templar
-           
-                    case 2 :
-                        teamNumber += 1
-                        let dwarf = Dwarf(name : name)
-                        print(dwarf.name, dwarf.weapon.nameWeapon, dwarf.weapon.damage)
-                        return dwarf
-         
-                    case 3 :
-                        teamNumber += 1
-                        let elf = Elf(name : name)
-                        print(elf.name, elf.weapon.nameWeapon, elf.weapon.damage)
-                        return elf
-                        
-                    case 4 :
-                        teamNumber += 1
-                        let magus = Magus(name : name)
-                        print(magus.name, magus.weapon.nameWeapon, magus.weapon.damage)
-                        return magus
+            
+            switch team {
+            case 1 :
+                teamNumber += 1
+                let templar = Templar(name : name)
+                print(templar.name, templar.weapon.nameWeapon, templar.weapon.damage)
+                return templar
+                
+            case 2 :
+                teamNumber += 1
+                let dwarf = Dwarf(name : name)
+                print(dwarf.name, dwarf.weapon.nameWeapon, dwarf.weapon.damage)
+                return dwarf
+                
+            case 3 :
+                teamNumber += 1
+                let elf = Elf(name : name)
+                print(elf.name, elf.weapon.nameWeapon, elf.weapon.damage)
+                return elf
+                
+            case 4 where !hasAlreadyChooseMagus:
+                hasAlreadyChooseMagus = true
+                teamNumber += 1
+                let magus = Magus(name : name)
+                print(magus.name, magus.weapon.nameWeapon, magus.weapon.damage)
+                return magus
+                
             default:
-                print("you didn't choose a character")
+                print("You didn't choose a character.")
+                
             }
-        
-    } while teamNumber < 1
+        } while teamNumber < 1
     }
     
     func createPlayer()  -> Player {
         var tabNamesOfCharacters: [String] = [String]()
         var tabOfCharacters: [Characters] = [Characters]()
+        
         repeat {
             print("\n -> Please choose the name of your character \(tabOfCharacters.count + 1) :")
             var check: Bool = false
@@ -91,8 +101,7 @@ class Game {
                     check = true
                     tabOfCharacters.append(choiceTeam(name: name))
                     tabNamesOfCharacters.append(name)
-                } else {
-                    print("\(name) is already taken !")
+                }else{ print("\(name) is already taken !")
                 }
             } while check == false
         } while tabOfCharacters.count != 3
@@ -113,7 +122,4 @@ class Game {
     // mettre en place le coffret aléatoire dans le jeu
     
 }
-
-
-
 

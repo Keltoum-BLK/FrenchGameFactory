@@ -10,15 +10,11 @@ import Foundation
 class Magus : Characters{
     static let type = "Magus"
     static let lifePoint = 150
-    static let weapon = Stick()
+    static let weapon = Spell()
     
     init(name : String){
-        super.init(type :"Magus", name : name, lifePoint: 150, weapon : Stick())
+        super.init(type :"Magus", name : name, lifePoint: 150, weapon : Spell())
     }
 
 
-    static func heal /*(Characters.lifePoints :Int )*/(){
-//
-        
-    }
 }
