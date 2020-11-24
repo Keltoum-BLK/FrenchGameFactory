@@ -14,6 +14,9 @@ import Foundation
 //
 let game = Game()
 game.startGame()
+let magus = Magus(name : "Henry")
+
+
 
 
 

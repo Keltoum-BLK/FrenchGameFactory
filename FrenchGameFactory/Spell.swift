@@ -12,7 +12,7 @@ class Spell : Weapon{
     static let damage = -30
     
     init() {
-        super.init(nameWeapon : "stick",damage: -30)
+        super.init(nameWeapon : "spell",damage: -30)
     }
     }
     

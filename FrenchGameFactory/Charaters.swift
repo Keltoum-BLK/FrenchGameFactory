@@ -4,7 +4,6 @@
 //
 //  Created by Keltoum Belkadi on 09/11/2020.
 //
-
 import Foundation
 //------------------------------------------------------------------------
     //CREATIONS  DES PERSONNAGES
@@ -23,7 +22,7 @@ import Foundation
             self.weapon = weapon
         }
         
-    //  
+    //
     //    func attack(){
     //        // lors de l'attaque sur une personnage associer la force avec les points de dommages.
     //        //mettre en place des case pour selection le personnage à attquer?
