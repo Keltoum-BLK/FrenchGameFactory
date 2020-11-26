@@ -108,7 +108,12 @@ class Game {
         print(tabNamesOfCharacters[0], tabOfCharacters[0].type, tabNamesOfCharacters[1], tabOfCharacters[1].type, tabOfCharacters[2].type, tabNamesOfCharacters[2])
         let player = Player(characters: [tabOfCharacters[0], tabOfCharacters[1], tabOfCharacters[2]])
         return player
+       
     }
+    
+    
+    
+   
     
     func StartBattle () {
         //ajouter les methodes attack et heal et transférer les perso morts dans le tableau charatersDead
@@ -122,4 +127,5 @@ class Game {
     // mettre en place le coffret aléatoire dans le jeu
     
 }
+
 
