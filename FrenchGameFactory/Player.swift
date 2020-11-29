@@ -12,7 +12,7 @@ import Foundation
 // pour chaque personnages choisi un nom à donner , mais également limiter les équipe à 3 (tableau) on peut a choisir des personnages de la meme classe.
 
 
- class Player {
+class Player {
     
     var characterAlive: [Characters] = [Characters]()
     var characterDead: [Characters] = [Characters]()

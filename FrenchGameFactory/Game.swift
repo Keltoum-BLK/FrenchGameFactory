@@ -15,6 +15,10 @@ import Foundation
 class Game {
     private var player1: Player?
     private var player2: Player?
+    private var playerTurn : Player?
+    private var notPlayerTurn : Player?
+    
+    private var isPlayerOneTurn : Bool = true
     private var hasAlreadyChooseMagus: Bool = false
     
     
@@ -108,15 +112,31 @@ class Game {
         print(tabNamesOfCharacters[0], tabOfCharacters[0].type, tabNamesOfCharacters[1], tabOfCharacters[1].type, tabOfCharacters[2].type, tabNamesOfCharacters[2])
         let player = Player(characters: [tabOfCharacters[0], tabOfCharacters[1], tabOfCharacters[2]])
         return player
-       
+        
     }
     
+    func whoAttack(){
+        playerTurn = isPlayerOneTurn ? player1 : player2
+        notPlayerTurn = isPlayerOneTurn ? player2 : player1
+        
+        guard let playerTurn = playerTurn else {return}
+        guard let notPlayerTurn = notPlayerTurn else {return }
+        
+        if isPlayerOneTurn {
+            print("Player 1, please choose a character")
+        }else{
+            print("Player 2, please choose a character")
+        }
+        
+        playerTurn.printCharacterInLife()
+        print("What your choice, please pick a number: ")
+        
+        
+    }
     
-    
-   
+    // fonction choice a attacker
     
     func StartBattle () {
-        //ajouter les methodes attack et heal et transférer les perso morts dans le tableau charatersDead
         
     }
     

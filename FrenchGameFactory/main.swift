@@ -12,10 +12,9 @@ import Foundation
 
 //print(Tools.shared.getInputInt())
 //
-//let game = Game()
-//game.startGame()
-let magus = Magus(name: "Harold")
-magus.heal()
+let game = Game()
+game.startGame()
+
 
 
 
