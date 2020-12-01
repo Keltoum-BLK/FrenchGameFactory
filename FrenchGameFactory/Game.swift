@@ -115,12 +115,12 @@ class Game {
         
     }
     
-    func whoAttack(){
+    func TurnOverPlayer(){
         playerTurn = isPlayerOneTurn ? player1 : player2
         notPlayerTurn = isPlayerOneTurn ? player2 : player1
         
         guard let playerTurn = playerTurn else {return}
-        guard let notPlayerTurn = notPlayerTurn else {return }
+        guard let notPlayerTurn = notPlayerTurn else {return}
         
         if isPlayerOneTurn {
             print("Player 1, please choose a character")
@@ -134,7 +134,20 @@ class Game {
         
     }
     
-    // fonction choice a attacker
+    //function to choose an attacker alive
+    func CheckYourCharaChoice(){
+        var numberOfChoice = 0
+        repeat{
+            let choice = Tools.shared.getInputInt()
+//            if choice <= 3 && choice >= 0choice == 1||choice == 2||choice == 3{
+            if choice >= 1 && choice <= 3 {
+                numberOfChoice += 1
+                print("\(String(describing: playerTurn?.characterAlive[choice - 1].name)) has \(playerTurn?.characterAlive[choice - 1].lifePoint ?? 0) LP.")
+            }else{
+                print("You pick the wrong number, choose between 1 and 3")
+            }
+        }while numberOfChoice < 1
+    }
     
     func StartBattle () {
         
