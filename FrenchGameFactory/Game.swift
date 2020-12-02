@@ -15,11 +15,14 @@ import Foundation
 class Game {
     private var player1: Player?
     private var player2: Player?
-    private var playerTurn : Player?
-    private var notPlayerTurn : Player?
+    private var playerTurn: Player?
+    private var notPlayerTurn: Player?
     
-    private var isPlayerOneTurn : Bool = true
+    private var isPlayerOneTurn: Bool = true
     private var hasAlreadyChooseMagus: Bool = false
+    
+    private var playerTurnSelectedCharacter: Characters?
+    private var playerNotTurnSelectedCharacter: Characters?
     
     
     func intro(){
@@ -30,16 +33,16 @@ class Game {
         print("🎮 Player 1 : you first : ")
         player1 = createPlayer()
         hasAlreadyChooseMagus = false
-        player1?.printCharacterInLife()
         print("\n🎮 Player 2 : your turn : ")
         player2 = createPlayer()
-        player2?.printCharacterInLife()
+        
+        TurnOverPlayer()
     }
     
     func startGame(){
         intro()
         createTeams()
-        print("\n⚔️ Get ready for the battle ? ⚔️")
+        //        print("\n⚔️ Get ready for the battle ? ⚔️")
     }
     
     func choiceTeam(name: String) -> Characters {
@@ -109,7 +112,6 @@ class Game {
                 }
             } while check == false
         } while tabOfCharacters.count != 3
-        print(tabNamesOfCharacters[0], tabOfCharacters[0].type, tabNamesOfCharacters[1], tabOfCharacters[1].type, tabOfCharacters[2].type, tabNamesOfCharacters[2])
         let player = Player(characters: [tabOfCharacters[0], tabOfCharacters[1], tabOfCharacters[2]])
         return player
         
@@ -129,25 +131,41 @@ class Game {
         }
         
         playerTurn.printCharacterInLife()
-        print("What your choice, please pick a number: ")
+        print("What your choice, please pick a number of your attacker: ")
         
+        playerTurnSelectedCharacter = CheckYourChoice(player: playerTurn)
+        guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
         
+        if  playerTurnSelectedCharacter.type != "Magus"{
+            notPlayerTurn.printCharacterInLife()
+            print("What your choice, please pick a number: ")
+            playerNotTurnSelectedCharacter = CheckYourChoice(player :notPlayerTurn)
+            playerTurnSelectedCharacter.attack(player: notPlayerTurn, target: playerNotTurnSelectedCharacter!)
+        } else {
+            print("Which character you want to heal: ")
+            playerTurn.printCharacterInLife()
+            playerTurnSelectedCharacter.attack(player: playerTurn, target: playerTurnSelectedCharacter)
+            
+        }
     }
     
     //function to choose an attacker alive
-    func CheckYourCharaChoice(){
+    func CheckYourChoice(player : Player)-> Characters{
         var numberOfChoice = 0
         repeat{
             let choice = Tools.shared.getInputInt()
-//            if choice <= 3 && choice >= 0choice == 1||choice == 2||choice == 3{
             if choice >= 1 && choice <= 3 {
                 numberOfChoice += 1
-                print("\(String(describing: playerTurn?.characterAlive[choice - 1].name)) has \(playerTurn?.characterAlive[choice - 1].lifePoint ?? 0) LP.")
+//                print("\(playerTurn?.characterAlive[choice - 1].name)) has \(playerTurn?.characterAlive[choice - 1].lifePoint ?? 0) LP.")
+//              playerTurnSelectedCharacter = player.characterAlive[choice - 1]
+                return player.characterAlive[choice - 1]
             }else{
                 print("You pick the wrong number, choose between 1 and 3")
             }
         }while numberOfChoice < 1
     }
+    
+   
     
     func StartBattle () {
         

@@ -13,8 +13,7 @@ import Foundation
 //print(Tools.shared.getInputInt())
 //
 let game = Game()
-//game.StartGame()
-game.CheckYourCharaChoice()
+game.startGame()
 
 
 
