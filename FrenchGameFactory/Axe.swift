@@ -8,10 +8,10 @@
 import Foundation
 class Axe : Weapon{
     static let nameWeappon = "axe"
-    static let damage = 30
+    static let damage = 50
     
     
     init() {
-        super.init(nameWeapon : "axe",damage: 30)
+        super.init(nameWeapon : "axe",damage: 50)
     }
 }

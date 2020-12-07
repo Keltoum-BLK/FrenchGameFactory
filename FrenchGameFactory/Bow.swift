@@ -9,10 +9,10 @@ import Foundation
 
 class Bow : Weapon{
     static let nameWeappon = "bow"
-    static let damage = 25
+    static let damage = 40
     
     init() {
-        super.init(nameWeapon : "bow",damage: 25)
+        super.init(nameWeapon : "bow",damage: 40)
     }
     
 

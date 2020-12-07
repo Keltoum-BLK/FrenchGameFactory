@@ -36,13 +36,14 @@ class Game {
         print("\n🎮 Player 2 : your turn : ")
         player2 = createPlayer()
         
-        TurnOverPlayer()
+        print("\n⚔️ Get ready for the battle ? ⚔️")
+        StartBattle()
     }
     
     func startGame(){
         intro()
         createTeams()
-        //        print("\n⚔️ Get ready for the battle ? ⚔️")
+        
     }
     
     func choiceTeam(name: String) -> Characters {
@@ -117,7 +118,7 @@ class Game {
         
     }
     
-    func TurnOverPlayer(){
+    func StartBattle(){
         playerTurn = isPlayerOneTurn ? player1 : player2
         notPlayerTurn = isPlayerOneTurn ? player2 : player1
         
@@ -133,31 +134,37 @@ class Game {
         playerTurn.printCharacterInLife()
         print("What your choice, please pick a number of your attacker: ")
         
-        playerTurnSelectedCharacter = CheckYourChoice(player: playerTurn)
+        playerTurnSelectedCharacter =  CallACharacter(player: playerTurn)
         guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
         
         if  playerTurnSelectedCharacter.type != "Magus"{
             notPlayerTurn.printCharacterInLife()
             print("What your choice, please pick a number: ")
-            playerNotTurnSelectedCharacter = CheckYourChoice(player :notPlayerTurn)
+            playerNotTurnSelectedCharacter = CallACharacter(player: notPlayerTurn)
             playerTurnSelectedCharacter.attack(player: notPlayerTurn, target: playerNotTurnSelectedCharacter!)
         } else {
             print("Which character you want to heal: ")
+            // on n'a pas appeler la méthode CallAnCharacter du coup par défaut il va s'auto soigner, mais surtout qu'on pas mattre PlayerTurnSelectedCharacter = CallAnCharacter(player : playerTrun) car on a définit PlayerTurnSelectedCharacter en constante.
             playerTurn.printCharacterInLife()
             playerTurnSelectedCharacter.attack(player: playerTurn, target: playerTurnSelectedCharacter)
-            
         }
+        
+        if playerTurn.characterDead.count == 3 || notPlayerTurn.characterDead.count == 3{
+            DisplayWinner()
+        } else {
+            isPlayerOneTurn.toggle()
+            StartBattle()
+        }
+        
     }
     
     //function to choose an attacker alive
-    func CheckYourChoice(player : Player)-> Characters{
+    func CallACharacter(player : Player)-> Characters{
         var numberOfChoice = 0
         repeat{
             let choice = Tools.shared.getInputInt()
-            if choice >= 1 && choice <= 3 {
+            if choice >= 1 && choice <= player.characterAlive.count{
                 numberOfChoice += 1
-//                print("\(playerTurn?.characterAlive[choice - 1].name)) has \(playerTurn?.characterAlive[choice - 1].lifePoint ?? 0) LP.")
-//              playerTurnSelectedCharacter = player.characterAlive[choice - 1]
                 return player.characterAlive[choice - 1]
             }else{
                 print("You pick the wrong number, choose between 1 and 3")
@@ -165,14 +172,13 @@ class Game {
         }while numberOfChoice < 1
     }
     
-   
     
-    func StartBattle () {
-        
-    }
-    
-    func displayWinner(){
-        
+    func DisplayWinner(){
+        if playerTurn?.characterDead.count == 3{
+            print("The Battle is OVER. The winner is \(isPlayerOneTurn.description)")
+        } else if notPlayerTurn?.characterDead.count == 3{
+            print("The Battle is OVER. The winner is \(isPlayerOneTurn.description)")// trouver le code pour afficher le joueur gagnant.
+        }
     }
     
     // mettre en place le coffret aléatoire dans le jeu

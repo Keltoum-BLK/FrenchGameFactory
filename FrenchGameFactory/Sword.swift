@@ -10,10 +10,10 @@ import Foundation
 //comment vérifier si c'est bien pris en compte et pq swift me demande de mettre _ alors que je veux que les points de dommages soit constant
 class Sword : Weapon{
     static let nameWeappon = "sword"
-    static let damage = 20
+    static let damage = 50
     
     init() {
-        super.init(nameWeapon : "sword",damage: 20)
+        super.init(nameWeapon : "sword",damage: 50)
     }
     
   
