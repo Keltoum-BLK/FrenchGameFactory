@@ -43,6 +43,7 @@ class Characters{
         
     }
     
+    
     //        func attack(character : Characters, character2: Characters){
     //            var player : Player?
     //
