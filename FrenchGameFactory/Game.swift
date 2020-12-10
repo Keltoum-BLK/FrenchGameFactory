@@ -20,6 +20,7 @@ class Game {
     
     private var isPlayerOneTurn: Bool = true
     private var hasAlreadyChooseMagus: Bool = false
+    private  var numberOfTurn = 0
     
     private var playerTurnSelectedCharacter: Characters?
     private var playerNotTurnSelectedCharacter: Characters?
@@ -122,6 +123,7 @@ class Game {
         playerTurn = isPlayerOneTurn ? player1 : player2
         notPlayerTurn = isPlayerOneTurn ? player2 : player1
         
+        
         guard let playerTurn = playerTurn else {return}
         guard let notPlayerTurn = notPlayerTurn else {return}
         
@@ -135,7 +137,7 @@ class Game {
         print("What your choice, please pick a number of your attacker: ")
         
         playerTurnSelectedCharacter =  callACharacter(player: playerTurn)
-//        guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
+        //        guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
         
         if  playerTurnSelectedCharacter!.type != "Magus"{
             notPlayerTurn.printCharacterInLife()
@@ -152,6 +154,8 @@ class Game {
         if playerTurn.characterDead.count == 3 || notPlayerTurn.characterDead.count == 3{
             DisplayWinner()
         } else {
+            numberOfTurn += 1
+            RandomChest()
             isPlayerOneTurn.toggle()
             startBattle()
         }
@@ -167,22 +171,48 @@ class Game {
                 numberOfChoice += 1
                 return player.characterAlive[choice - 1]
             }else{
-                print("You pick the wrong number, choose between 1 and 3")
+                print("You pick the wrong number, choose between 1 and \(player.characterAlive.count)")
             }
         }while numberOfChoice < 1
     }
     
     
     func DisplayWinner(){
-        isPlayerOneTurn ? print("Player 2 Wins") : print("Player 1 Wins")
+        isPlayerOneTurn ? print("Player 2 Wins🎊") : print("Player 1 Wins🎊")
     }
     
-    // mettre en place le coffret aléatoire dans le jeu
+    func RandomChest(){
+        let randomWeapon = Int.random(in: 0...10)
+        if randomWeapon == 5 {
+            openTheChest()
+            print("Do you take the secret weapon?"
+            + "\n1. Yes"
+            + "\n2. No")
+            let takeTheWeapon = Tools.shared.getInputInt()
+            if takeTheWeapon == 1{
+                let weaponChoice = [Axe(), Sword(), Bow(), Spell()]
+                playerTurnSelectedCharacter?.weapon = weaponChoice.randomElement()!
+                print("\(playerTurnSelectedCharacter!.name) has   \(playerTurnSelectedCharacter!.weapon.nameWeapon) with  \(playerTurnSelectedCharacter!.weapon.damage)")
+           } else {
+                startBattle()
+            }
+            
+        }
+    }
     
-    // var toto = random 1...10
-    // if toto == 5{
+    func openTheChest(){
+        print(" Do you want open the secret chest :"
+                + "\n 1. Yes"
+                + "\n 2. No")
+        let openTheChest = Tools.shared.getInputInt()
+        if  openTheChest == 1{
+            print("You open the secret chest!🥳")
+        } else {
+            startBattle()
+        }
+        
+    }
 
-    // selectCharcter = nouvel arme
     
 }
 

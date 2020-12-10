@@ -33,7 +33,7 @@ class Characters{
         
         if target.lifePoint <= 0{
             target.lifePoint = 0
-            print("\(target.name) is dead.")
+            print("\(target.name) is dead ⚰️.")
             player.numberOfCharacterDies += 1
             player.characterAlive.removeAll { (character) -> Bool in
                 return target.name == character.name ? true : false
