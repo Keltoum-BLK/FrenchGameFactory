@@ -20,7 +20,7 @@ class Game {
     
     private var isPlayerOneTurn: Bool = true
     private var hasAlreadyChooseMagus: Bool = false
-    private  var numberOfTurn = 0
+
     
     private var playerTurnSelectedCharacter: Characters?
     private var playerNotTurnSelectedCharacter: Characters?
@@ -154,7 +154,6 @@ class Game {
         if playerTurn.characterDead.count == 3 || notPlayerTurn.characterDead.count == 3{
             DisplayWinner()
         } else {
-            numberOfTurn += 1
             RandomChest()
             isPlayerOneTurn.toggle()
             startBattle()
@@ -190,7 +189,7 @@ class Game {
             + "\n2. No")
             let takeTheWeapon = Tools.shared.getInputInt()
             if takeTheWeapon == 1{
-                let weaponChoice = [Axe(), Sword(), Bow(), Spell()]
+                let weaponChoice = [Axe(), Sword(), Bow()]
                 playerTurnSelectedCharacter?.weapon = weaponChoice.randomElement()!
                 print("\(playerTurnSelectedCharacter!.name) has   \(playerTurnSelectedCharacter!.weapon.nameWeapon) with  \(playerTurnSelectedCharacter!.weapon.damage)")
            } else {
