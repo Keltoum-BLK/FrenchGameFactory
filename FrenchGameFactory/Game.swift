@@ -20,7 +20,7 @@ class Game {
     
     private var isPlayerOneTurn: Bool = true
     private var hasAlreadyChooseMagus: Bool = false
-
+    private var numberOfPlayersTurn = 0
     
     private var playerTurnSelectedCharacter: Characters?
     private var playerNotTurnSelectedCharacter: Characters?
@@ -47,7 +47,7 @@ class Game {
         
     }
     
-    func choiceTeam(name: String) -> Characters {
+    func choiceCharacter(name: String) -> Characters {
         var teamNumber = 0
         
         
@@ -92,11 +92,10 @@ class Game {
                 
             default:
                 print("You didn't choose a character.")
-                
             }
         } while teamNumber < 1
     }
-    
+    // MARK: 
     func createPlayer()  -> Player {
         var tabNamesOfCharacters: [String] = [String]()
         var tabOfCharacters: [Characters] = [Characters]()
@@ -108,9 +107,9 @@ class Game {
                 let name = Tools.shared.getInputString()
                 if !tabNamesOfCharacters.contains(name) {
                     check = true
-                    tabOfCharacters.append(choiceTeam(name: name))
+                    tabOfCharacters.append(choiceCharacter(name: name))
                     tabNamesOfCharacters.append(name)
-                }else{ print("\(name) is already taken !")
+                } else { print("\(name) is already taken !")
                 }
             } while check == false
         } while tabOfCharacters.count != 3
@@ -122,65 +121,71 @@ class Game {
     func startBattle(){
         playerTurn = isPlayerOneTurn ? player1 : player2
         notPlayerTurn = isPlayerOneTurn ? player2 : player1
-        
+      
         
         guard let playerTurn = playerTurn else {return}
         guard let notPlayerTurn = notPlayerTurn else {return}
         
         if isPlayerOneTurn {
             print("Player 1, please choose a character")
-        }else{
+        } else {
             print("Player 2, please choose a character")
         }
         
         playerTurn.printCharacterInLife()
         print("What your choice, please pick a number of your attacker: ")
         
-        playerTurnSelectedCharacter =  callACharacter(player: playerTurn)
-        //        guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
+        playerTurnSelectedCharacter =  selectCharacter(player: playerTurn)
+        guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
         
-        if  playerTurnSelectedCharacter!.type != "Magus"{
+        if  playerTurnSelectedCharacter.type != "Magus"{
             notPlayerTurn.printCharacterInLife()
             print("What your choice, please pick a number: ")
-            playerNotTurnSelectedCharacter = callACharacter(player: notPlayerTurn)
-            playerTurnSelectedCharacter!.attack(player: notPlayerTurn, target: playerNotTurnSelectedCharacter!)
+            playerNotTurnSelectedCharacter = selectCharacter(player: notPlayerTurn)
+            playerTurnSelectedCharacter.attack(player: notPlayerTurn, target: playerNotTurnSelectedCharacter!)
         } else {
             print("Which character you want to heal: ")
             playerTurn.printCharacterInLife()
-            playerTurnSelectedCharacter = callACharacter(player: playerTurn)
-            playerTurnSelectedCharacter!.attack(player: playerTurn, target: playerTurnSelectedCharacter!)
+            let targetToHeal = selectCharacter(player: playerTurn)
+            playerTurnSelectedCharacter.attack(player: playerTurn, target: targetToHeal)
         }
+        randomChest()
+        if !isPlayerOneTurn{
+            numberOfPlayersTurn += 1
+        }
+        isPlayerOneTurn.toggle()
         
         if playerTurn.characterDead.count == 3 || notPlayerTurn.characterDead.count == 3{
-            DisplayWinner()
+            displayWinner()
         } else {
-            RandomChest()
-            isPlayerOneTurn.toggle()
             startBattle()
         }
         
     }
     
     //function to choose an attacker alive
-    func callACharacter(player : Player)-> Characters{
+    func selectCharacter(player : Player)-> Characters{
         var numberOfChoice = 0
         repeat{
             let choice = Tools.shared.getInputInt()
             if choice >= 1 && choice <= player.characterAlive.count{
                 numberOfChoice += 1
                 return player.characterAlive[choice - 1]
-            }else{
+            } else {
                 print("You pick the wrong number, choose between 1 and \(player.characterAlive.count)")
             }
         }while numberOfChoice < 1
     }
     
     
-    func DisplayWinner(){
+    func displayWinner(){
+        print("\nCongradulation!!!")
         isPlayerOneTurn ? print("Player 2 Wins🎊") : print("Player 1 Wins🎊")
+        print("\nYour party counts \(numberOfPlayersTurn) turns.")
+        
     }
     
-    func RandomChest(){
+    func randomChest(){
         let randomWeapon = Int.random(in: 0...10)
         if randomWeapon == 5 {
             openTheChest()

@@ -93,12 +93,20 @@
 				D1FB7AE52559998200EF4098 /* Elf.swift */,
 				D1FB7AE82559998C00EF4098 /* Magus.swift */,
 				D1FB7AEB2559999600EF4098 /* Weapon.swift */,
-				D1FB7AEE2559999E00EF4098 /* Sword.swift */,
-				D1FB7AF1255999A600EF4098 /* Axe.swift */,
-				D1FB7AF4255999B000EF4098 /* Bow.swift */,
-				D1748B7E2568157B00790320 /* Spell.swift */,
+				D1E84EB92584D61F004C4252 /* Weapon */,
 			);
 			path = FrenchGameFactory;
+			sourceTree = "<group>";
+		};
+		D1E84EB92584D61F004C4252 /* Weapon */ = {
+			isa = PBXGroup;
+			children = (
+				D1FB7AF4255999B000EF4098 /* Bow.swift */,
+				D1748B7E2568157B00790320 /* Spell.swift */,
+				D1FB7AF1255999A600EF4098 /* Axe.swift */,
+				D1FB7AEE2559999E00EF4098 /* Sword.swift */,
+			);
+			path = Weapon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
