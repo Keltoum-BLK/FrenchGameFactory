@@ -24,7 +24,7 @@ class Characters{
     func attack(player : Player, target : Characters){
         
       target.lifePoint -= weapon.damage
-        print ("\(target.name) has \(target.lifePoint) LP")
+        print ("\(target.name)'s life point are \(target.lifePoint).")
         
         if target.lifePoint <= 0{
             target.lifePoint = 0

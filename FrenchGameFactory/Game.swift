@@ -68,26 +68,26 @@ class Game {
             case 1 :
                 teamNumber += 1
                 let templar = Templar(name : name)
-                print(templar.name, templar.weapon.nameWeapon, templar.weapon.damage)
+                print("You chose \(templar.name), the \(templar.type) with a \(templar.weapon.nameWeapon) with \(templar.weapon.damage) damage points.")
                 return templar
                 
             case 2 :
                 teamNumber += 1
                 let dwarf = Dwarf(name : name)
-                print(dwarf.name, dwarf.weapon.nameWeapon, dwarf.weapon.damage)
+                print("You chose \(dwarf.name), the \(dwarf.type) with an \(dwarf.weapon.nameWeapon) with \(dwarf.weapon.damage) damage points.")
                 return dwarf
                 
             case 3 :
                 teamNumber += 1
                 let elf = Elf(name : name)
-                print(elf.name, elf.weapon.nameWeapon, elf.weapon.damage)
+                print("You chose \(elf.name), the \(elf.type) with a \(elf.weapon.nameWeapon) with \(elf.weapon.damage) damage points.")
                 return elf
                 
             case 4 where !hasAlreadyChooseMagus:
                 hasAlreadyChooseMagus = true
                 teamNumber += 1
                 let magus = Magus(name : name)
-                print(magus.name, magus.weapon.nameWeapon, magus.weapon.damage)
+                print("You chose \(magus.name), the \(magus.type) who can heal with \(magus.weapon.nameWeapon) (30 points for each healing).")
                 return magus
                 
             default:
@@ -181,11 +181,24 @@ class Game {
     func displayWinner(){
         print("\nCongradulation!!!")
         isPlayerOneTurn ? print("Player 2 Wins🎊") : print("Player 1 Wins🎊")
+        
         print("\nYour party counts \(numberOfPlayersTurn) turns.")
         
+        print("Those who remain alive after the battle: 💪🏼")
+        
+        isPlayerOneTurn ? playerTurn!.printCharacterInLife() : notPlayerTurn!.printCharacterInLife()
+        
+        print("The dead in the battlefield ☠️:")
+        for dead1 in playerTurn!.characterDead{
+                print ("\n \(dead1.name), \(dead1.type)  ")
+            }
+        for dead2 in notPlayerTurn!.characterDead{
+            print ("\n \(dead2.name), \(dead2.type)  ")
+        }
     }
-    
+    // MARK: Coffre aléatoire se générant par le biais d'un nombre aléatoire. 
     func randomChest(){
+        //cette méthode permet de générer un coffre aléatoire en se basant sur un nombre généré de façon aléatoire.
         let randomWeapon = Int.random(in: 0...10)
         if randomWeapon == 5 {
             openTheChest()
@@ -194,16 +207,21 @@ class Game {
             + "\n2. No")
             let takeTheWeapon = Tools.shared.getInputInt()
             if takeTheWeapon == 1{
-                let weaponChoice = [Axe(), Sword(), Bow()]
+                let weaponChoice = [Axe(), Sword(), Bow(), Spell()]
                 playerTurnSelectedCharacter?.weapon = weaponChoice.randomElement()!
-                print("\(playerTurnSelectedCharacter!.name) has   \(playerTurnSelectedCharacter!.weapon.nameWeapon) with  \(playerTurnSelectedCharacter!.weapon.damage)")
-           } else {
+                print("\(playerTurnSelectedCharacter!.name) can use now :  \(playerTurnSelectedCharacter!.weapon.nameWeapon)!")
+                // si l'arme aléatoire est spell alors le personnage attaquant se voit maudit en devant soigner ses adversaires.
+                if playerTurnSelectedCharacter?.weapon.nameWeapon == "spell"{
+                   print("You have been cursed!!😈 \(playerTurnSelectedCharacter!.name) has \(playerTurnSelectedCharacter!.weapon.nameWeapon), the only way out is to heal your ennemies. Unlucky you are to not be a magus Mouhahahahahaha!!")
+                }
+            } else {
+                isPlayerOneTurn.toggle()
                 startBattle()
             }
-            
         }
+  
     }
-    
+    //MARK:
     func openTheChest(){
         print(" Do you want open the secret chest :"
                 + "\n 1. Yes"
@@ -212,12 +230,11 @@ class Game {
         if  openTheChest == 1{
             print("You open the secret chest!🥳")
         } else {
+            isPlayerOneTurn.toggle()
             startBattle()
         }
-        
     }
 
-    
 }
 
 
