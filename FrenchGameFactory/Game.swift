@@ -189,7 +189,7 @@ class Game {
         
         print("Those who remain alive after the battle: 💪🏼")
         
-        isPlayerOneTurn ? playerTurn!.printCharacterInLife() : notPlayerTurn!.printCharacterInLife()
+        isPlayerOneTurn ? player2!.printCharacterInLife() : player1!.printCharacterInLife()
         
         print("The dead in the battlefield ☠️:")
         for dead1 in playerTurn!.characterDead{
@@ -213,9 +213,11 @@ class Game {
                 let weaponChoice = [Axe(), Sword(), Bow(), Spell()]
                 playerTurnSelectedCharacter?.weapon = weaponChoice.randomElement()!
                 print("\(playerTurnSelectedCharacter!.name) can use now :  \(playerTurnSelectedCharacter!.weapon.nameWeapon)!")
-                // if the character who attacks accept the weapon and have spell the character who attacks is cursed not the magus. the attacker have not choice to heal his ennemies.
+                // if the character who attacks accept the weapon and have spell the character who attacks is cursed not the magus. the attacker have not choice to heal his ennemies. for the magus is cursed by a berserk'call and attacks his allies.
                 if playerTurnSelectedCharacter?.weapon.nameWeapon == "spell"{
                     print("You have been cursed!!😈 \(playerTurnSelectedCharacter!.name) has \(playerTurnSelectedCharacter!.weapon.nameWeapon), the only way out is to heal your ennemies. Unlucky you are to not be a magus Mouhahahahahaha!!")
+                } else if playerTurnSelectedCharacter?.type == "Magus" && playerTurnSelectedCharacter?.weapon.nameWeapon != "spell"{
+                    print("You have been cursed by the Berserk's Call!!😈 \(playerTurnSelectedCharacter!.name) has \(playerTurnSelectedCharacter!.weapon.nameWeapon), the only way out is to attack your allies. Unlucky you are a magus, blood's magic have a price! Mouhahahahahaha!!")
                 }
             } else {
                 isPlayerOneTurn.toggle()
