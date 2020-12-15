@@ -24,11 +24,18 @@ class Player {
             self.characterAlive.append(character)
         }
     }
-    
+    // display the characterAlive array for a player
     func printCharacterInLife() {
         characterAlive.enumerated().forEach { (index, character) in
             print("\(index + 1) : \(character.name) (\(character.type) \(character.lifePoint) LP - (\(character.weapon.damage) WD)")
         }
     }
+    // display the characterDead array for a player 
+    func printCharacterDead() {
+            characterDead.enumerated().forEach { (index, character) in
+                print("\(index + 1) : \(character.name) (\(character.type) \(character.lifePoint) LP - (\(character.weapon.damage) WD)")
+            }
+    }
+   
     
 }

@@ -29,19 +29,21 @@ class Game {
     func intro(){
         print("Welcome to Crash of Inquisition. \n\nYou take part in a turn-based role-playing game where you compete against each other. \nThe winner is the one who stays alive. \n \nSo let's go !!! \n")
     }
-    
+    //MARK: Create Teams
     func createTeams() {
+        //create the player 1 team and use the boolean hasAlreadyChooseMagus put false to create the player 2's team
         print("🎮 Player 1 : you first : ")
         player1 = createPlayer()
         hasAlreadyChooseMagus = false
         print("\n🎮 Player 2 : your turn : ")
         player2 = createPlayer()
-        
+        //the teams are created now we can begin the battle
         print("\n⚔️ Get ready for the battle ? ⚔️")
         startBattle()
     }
-    
+    //MARK: START GAME
     func startGame(){
+        //Assembly of the methods intro, createTeams (inclued in itself the method StartBattle) very methods to run the game.
         intro()
         createTeams()
         
@@ -50,7 +52,7 @@ class Game {
     func choiceCharacter(name: String) -> Characters {
         var teamNumber = 0
         
-        
+        //ternary condition it's to display the characters to select to create a team and remove the magus to the list of the player has already a magus in his team.
         !hasAlreadyChooseMagus ? print("Please select your character class: "
                                         + "\n1. 🛡Templar, weapon: sword."
                                         + "\n2. 🪓Dwarf, weapon: axe."
@@ -60,7 +62,7 @@ class Game {
                                                                                         + "\n2. 🪓Dwarf, weapon: axe."
                                                                                         + "\n3. 🧝🏼‍♂️Elf, weapon: bow.")
         
-        
+        //repeat the creation of a character until the player has created one and use the boolean hasAlreayAMagus to have a magus per team.
         repeat {
             let team = Tools.shared.getInputInt()
             
@@ -97,16 +99,20 @@ class Game {
     }
     // MARK: CREATE A PLAYER 
     func createPlayer()  -> Player {
+        //Use an array for each element of a character to use it and avoid duplicate name of the character in both teams.
         var tabNamesOfCharacters: [String] = [String]()
         var tabOfCharacters: [Characters] = [Characters]()
-        
+        //repeat the command until the array count 3 characters to create the team's player.
         repeat {
             print("\n -> Please choose the name of your character \(tabOfCharacters.count + 1) :")
+            //the boolean helps to check if the condiction not to create a duplicate name is good.
             var check: Bool = false
+            //repeat the command until the name of the characters is not duplicate for the same team. different name for every chaacters of the array.
             repeat {
                 let name = Tools.shared.getInputString()
                 if !tabNamesOfCharacters.contains(name) {
                     check = true
+                    //using the method choiceCharacter to create a character whose are append to the tabOfCharacters to create the player in fact all character are created like character Alive (see the player class to see the details)
                     tabOfCharacters.append(choiceCharacter(name: name))
                     tabNamesOfCharacters.append(name)
                 } else { print("\(name) is already taken !")
@@ -117,8 +123,9 @@ class Game {
         return player
         
     }
-    
+    //MARK: START BATTLE METHOD TO DETAILS THE ACTION OF SELECTED CHARACTERS AGAINST AN ENNEMY OR ALLY.
     func startBattle(){
+        //Using the boolean to know cho is the turn or not
         playerTurn = isPlayerOneTurn ? player1 : player2
         notPlayerTurn = isPlayerOneTurn ? player2 : player1
         
@@ -137,7 +144,7 @@ class Game {
         
         playerTurnSelectedCharacter =  selectCharacter(player: playerTurn)
         guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
-        
+        //the action is different if the character are a magus or not, because the only action is to heal for the magus.
         if  playerTurnSelectedCharacter.type != "Magus"{
             notPlayerTurn.printCharacterInLife()
             print("What your choice, please pick a number: ")
@@ -154,7 +161,7 @@ class Game {
             numberOfPlayersTurn += 1
         }
         isPlayerOneTurn.toggle()
-        
+        //continue the game until all characters of a team die, if it's the case display the winner.
         if playerTurn.characterDead.count == 3 || notPlayerTurn.characterDead.count == 3{
             displayWinner()
         } else {
@@ -188,17 +195,16 @@ class Game {
         print("\nYour party counts \(numberOfPlayersTurn) turns.")
         
         print("Those who remain alive after the battle: 💪🏼")
-        
+        //display the winner's characterAlive only and display the characters dead per team
         isPlayerOneTurn ? player2!.printCharacterInLife() : player1!.printCharacterInLife()
         
         print("The dead in the battlefield ☠️:")
-        for dead1 in playerTurn!.characterDead{
-            print ("\(dead1.name), \(dead1.type)  ")
-        }
-        for dead2 in notPlayerTurn!.characterDead{
-            print ("\(dead2.name), \(dead2.type)  ")
-        }
+        print ("Player 1's team:")
+        player1!.printCharacterDead()
+        print ("Player 2's team:")
+        player2!.printCharacterDead()
     }
+    
     // MARK:Random chest generated by a random number.
     func randomChest(){
         //the method allows with the random number but also with the tool "getInputInt" for the player wants (yes or no) to generate a weapon which will replace that of the character who made the last attack or if he refuses to continue the game.
@@ -220,7 +226,6 @@ class Game {
                     print("You have been cursed by the Berserk's Call!!😈 \(playerTurnSelectedCharacter!.name) has \(playerTurnSelectedCharacter!.weapon.nameWeapon), the only way out is to attack your allies. Unlucky you are a magus, blood's magic have a price! Mouhahahahahaha!!")
                 }
             } else {
-                isPlayerOneTurn.toggle()
                 startBattle()
             }
         }
@@ -233,10 +238,10 @@ class Game {
                 + "\n 1. Yes"
                 + "\n 2. No")
         let openTheChest = Tools.shared.getInputInt()
+        isPlayerOneTurn.toggle()
         if  openTheChest == 1{
             print("You open the secret chest!🥳")
         } else {
-            isPlayerOneTurn.toggle()
             startBattle()
         }
     }

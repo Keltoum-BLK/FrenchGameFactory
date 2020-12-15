@@ -8,10 +8,8 @@
 import Foundation
 
 
-//Caster les choix (1,2,3) du joueur pour mettre en place switch case plus tard
 
-//print(Tools.shared.getInputInt())
-//
+//generate a game and run it 
 let game = Game()
 game.startGame()
 
