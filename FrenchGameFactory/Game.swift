@@ -93,7 +93,7 @@ class Game {
                 return magus
                 
             default:
-                print("You didn't choose a character.")
+                print("You didn't choose a character. Please pick a number to choose a character.")
             }
         } while teamNumber < 1
     }
