@@ -11,7 +11,7 @@ import Foundation
 //----------------------------------------------------------------
 
 
-// Définir les accès
+
 class Game {
     private var player1: Player?
     private var player2: Player?
