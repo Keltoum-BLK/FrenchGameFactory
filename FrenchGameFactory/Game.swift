@@ -146,6 +146,7 @@ class Game {
         guard let playerTurnSelectedCharacter = playerTurnSelectedCharacter else { return }
         //the action is different if the character are a magus or not, because the only action is to heal for the magus.
         if  playerTurnSelectedCharacter.type != "Magus"{
+            randomChest()
             notPlayerTurn.printCharacterInLife()
             print("What your choice, please pick a number: ")
             playerNotTurnSelectedCharacter = selectCharacter(player: notPlayerTurn)
@@ -156,7 +157,6 @@ class Game {
             let targetToHeal = selectCharacter(player: playerTurn)
             playerTurnSelectedCharacter.attack(player: playerTurn, target: targetToHeal)
         }
-        randomChest()
         if !isPlayerOneTurn{
             numberOfPlayersTurn += 1
         }
@@ -210,8 +210,8 @@ class Game {
         
         //the method allows with the random number but also with the tool "getInputInt" for the player wants (yes or no) to generate a weapon which will replace that of the character who made the last attack or if he refuses to continue the game.
         var takeChoiceNumber = 0
-        let randomWeapon = Int.random(in: 0...10)
-        if randomWeapon == 5 {
+        let randomWeapon = Int.random(in: 0...3)
+        if randomWeapon == 2 {
             openTheChest()
             repeat{
                 print("Do you take the secret weapon?"
@@ -231,9 +231,6 @@ class Game {
                     }
                 } else if takeTheWeapon == 2{
                     takeChoiceNumber += 1
-                    if playerTurn?.characterDead.count == 3 || notPlayerTurn?.characterDead.count == 3{
-                        displayWinner()
-                    }
                 } else {
                     print("I didn't understand your choice, pick a number.")
                 }
@@ -253,10 +250,6 @@ class Game {
                 print("You open the secret chest!🥳")
                 numberChest += 1
             } else if openTheChest == 2{
-                isPlayerOneTurn.toggle()
-                if playerTurn?.characterDead.count == 3 || notPlayerTurn?.characterDead.count == 3{
-                    displayWinner()
-                }
                 numberChest += 1
                 startBattle()
             } else {
@@ -265,5 +258,6 @@ class Game {
         }while numberChest < 1
     }
 }
+
 
 
