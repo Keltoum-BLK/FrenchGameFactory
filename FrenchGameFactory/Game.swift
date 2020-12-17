@@ -210,7 +210,7 @@ class Game {
         
         //the method allows with the random number but also with the tool "getInputInt" for the player wants (yes or no) to generate a weapon which will replace that of the character who made the last attack or if he refuses to continue the game.
         var takeChoiceNumber = 0
-        let randomWeapon = Int.random(in: 0...3)
+        let randomWeapon = Int.random(in: 0...5)
         if randomWeapon == 2 {
             openTheChest()
             repeat{
