@@ -210,8 +210,8 @@ class Game {
         
         //the method allows with the random number but also with the tool "getInputInt" for the player wants (yes or no) to generate a weapon which will replace that of the character who made the last attack or if he refuses to continue the game.
         var takeChoiceNumber = 0
-        let randomWeapon = Int.random(in: 0...5)
-        if randomWeapon == 2 {
+        let randomWeapon = Int.random(in: 0...10)
+        if randomWeapon == 5{
             openTheChest()
             repeat{
                 print("Do you take the secret weapon?"
@@ -231,6 +231,9 @@ class Game {
                     }
                 } else if takeTheWeapon == 2{
                     takeChoiceNumber += 1
+                    if playerTurn?.characterDead.count == 3 || notPlayerTurn?.characterDead.count == 3{
+                        print ("Game Over")
+                    }
                 } else {
                     print("I didn't understand your choice, pick a number.")
                 }
