@@ -36,6 +36,4 @@ class Player {
                 print("\(index + 1) : \(character.name) (\(character.type) \(character.lifePoint) LP - (\(character.weapon.damage) WD)")
             }
     }
-   
-    
 }

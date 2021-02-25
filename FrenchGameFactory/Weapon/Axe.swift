@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class Axe : Weapon{
+class Axe : Weapon {
     static let nameWeappon = "axe"
     static let damage = 50
     

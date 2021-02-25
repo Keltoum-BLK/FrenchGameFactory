@@ -7,12 +7,12 @@
 
 import Foundation
 
-class Spell : Weapon{
+class Spell : Weapon {
     static let nameWeappon = "spell"
     static let damage = -30
     
     init() {
         super.init(nameWeapon : "spell",damage: -30)
     }
-    }
+}
     

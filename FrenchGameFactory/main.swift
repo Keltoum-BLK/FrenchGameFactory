@@ -12,11 +12,3 @@ import Foundation
 //generate a game and run it 
 let game = Game()
 game.startGame()
-
-
-
-
-
-//let ohe = Dwarf(name: "Oghren")
-//print(ohe.name, ohe.lifePoint, ohe.type, ohe.weapon.damage)
-

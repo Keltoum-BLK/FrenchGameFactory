@@ -12,7 +12,7 @@ class Magus : Characters{
     static let weapon = Spell()
 
     
-    init(name : String){
+    init(name : String) {
         super.init(type :"Magus", name : name, lifePoint: 150, weapon : Spell())
     }
     

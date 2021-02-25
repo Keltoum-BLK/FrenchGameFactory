@@ -8,7 +8,7 @@ import Foundation
 //------------------------------------------------------------------------
 //CREATIONS  DES PERSONNAGES
 //------------------------------------------------------------------------
-class Characters{
+class Characters {
     var type : String
     var name : String
     var lifePoint : Int
@@ -21,12 +21,12 @@ class Characters{
         self.weapon = weapon
     }
     //MARK: FUNCTION ATTACK A PLAYER WITH A TARGET
-    func attack(player : Player, target : Characters){
+    func attack(player : Player, target : Characters) {
         
       target.lifePoint -= weapon.damage
         print ("\(target.name)'s life point are \(target.lifePoint).")
         //command to send a character with a negatif or zero life point at the characterDead array.
-        if target.lifePoint <= 0{
+        if target.lifePoint <= 0 {
             target.lifePoint = 0
             print("\(target.name) is dead ⚰️.")
             player.numberOfCharacterDies += 1
@@ -36,8 +36,5 @@ class Characters{
             }
             player.characterDead.append(target)
         }
-        
     }
 }
-
-

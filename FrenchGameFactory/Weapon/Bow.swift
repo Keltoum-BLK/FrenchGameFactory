@@ -7,13 +7,11 @@
 
 import Foundation
 
-class Bow : Weapon{
+class Bow : Weapon {
     static let nameWeappon = "bow"
     static let damage = 40
     
     init() {
         super.init(nameWeapon : "bow",damage: 40)
     }
-    
-
 }

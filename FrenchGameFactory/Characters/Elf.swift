@@ -11,7 +11,7 @@ class Elf : Characters{
     static let lifePoint = 170
     static let weapon = Bow()
     
-    init(name : String){
+    init(name : String) {
         super.init(type :"Elf", name : name, lifePoint: 170, weapon : Bow())
     }
 }

@@ -12,7 +12,7 @@ import Foundation
 class Weapon{
     var nameWeapon : String
     var damage : Int
-    init (nameWeapon : String, damage: Int){
+    init (nameWeapon : String, damage: Int) {
         self.nameWeapon = nameWeapon
         self.damage = damage
     }

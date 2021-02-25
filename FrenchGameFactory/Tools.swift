@@ -17,17 +17,12 @@ class Tools {
         return strDataInt
     }
     
-    func getInputString() -> String{
+    func getInputString() -> String {
         let str = readLine()
         // cast a optional String value (readLine()) in String Value unwrapped the optional with a guard let syntaxe
-        guard let strData = str else {return "aie"}
+        guard let strData = str else { return "aie" }
         return strData
     }
-
-
-
-
-
 }
 
 
